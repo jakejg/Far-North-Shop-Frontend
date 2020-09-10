@@ -1,0 +1,23 @@
+.NavBar-collapse {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.NavBar-item {
+    margin: 10px;
+}
+
+.NavBar-link {
+    color: black;
+}
+
+.NavBar-link:hover {
+    color:rgb(71, 71, 71);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.active {
+    color:rgb(71, 71, 71);
+}
+

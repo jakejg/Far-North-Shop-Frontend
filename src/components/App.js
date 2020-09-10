@@ -1,12 +1,12 @@
 import React from 'react';
-import Navbar from './Navbar'
+import NavBar from './NavBar'
 import Routes from './Routes'
-import './App.css';
+import '../styles/App.css';
 
 const App = () => {
     return (
         <div className="App">
-            <Navbar />
+            <NavBar />
             <Routes />
         </div>
     );
