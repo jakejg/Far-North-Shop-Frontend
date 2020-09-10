@@ -11,13 +11,15 @@ const ProductList = () => {
         }
         getData();
 
-    })
+    }, [])
     console.log(products)
 
     return (
-        products.map(product => {
-            
-        })
+        products.map(product => 
+            <div>
+                <img src={`http://127.0.0.1:5000/static/images/${product.img}`} />
+            </div>
+        )
     )
 }
 
