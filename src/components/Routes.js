@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import ProductList from './ProductList';
-import AddForm from './AddForm';
+import ChangeProducts from './ChangeProducts';
 
 const Routes = () => {
     return (
@@ -9,8 +9,8 @@ const Routes = () => {
             <Route exact path='/products'>
                 <ProductList/>
             </Route>
-            <Route exact path='/add_products'>
-                <AddForm/>
+            <Route exact path='/change_products'>
+                <ChangeProducts/>
             </Route>
             <Redirect to='/' />
         </Switch>

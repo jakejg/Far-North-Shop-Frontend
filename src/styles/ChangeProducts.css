@@ -1,0 +1,8 @@
+.ChangeProducts-form {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 1em .4em #ccc
+}
