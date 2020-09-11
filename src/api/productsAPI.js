@@ -12,6 +12,16 @@ class ProductsAPI {
             console.log(e)
         }
     }
+
+    static async addProduct(data) {
+        try {
+            let res = await axios.post(BASE_URL, data)
+            return res.data
+        }
+        catch(e) {
+            console.log(e)
+        }
+    }
 }
 
 export default ProductsAPI;
