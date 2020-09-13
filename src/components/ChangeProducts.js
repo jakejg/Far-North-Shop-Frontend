@@ -6,7 +6,7 @@ import '../styles/ChangeProducts.css';
 
 
 const ChangeProducts = () => {
-    const INITIAL_STATE = {description: "", price: "", type: "", imgFile: ""}
+    const INITIAL_STATE = {description: "", price: "", type: "", imgFile: "", img: ""}
     const [formData, setFormData] = useState(INITIAL_STATE);
     const fileInputRef = useRef();
 
@@ -21,7 +21,7 @@ const ChangeProducts = () => {
         let reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onloadend = () => {
-            setFormData(formData => ({...formData, imgFile: reader.result}))
+            setFormData(formData => ({...formData, imgFile: reader.result, img: file.name}))
         }
         reader.onerror = (error) => {
             console.log('Error', error)
