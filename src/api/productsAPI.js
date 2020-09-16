@@ -13,6 +13,16 @@ class ProductsAPI {
         }
     }
 
+    static async getItem(id) {
+        try {
+            let res = await axios.get(`${BASE_URL}/${id}`)
+            return res.data
+        }
+        catch(e) {
+            console.log(e)
+        }
+    }
+
     static async addProduct(data) {
         try {
             let res = await axios.post(BASE_URL, data)

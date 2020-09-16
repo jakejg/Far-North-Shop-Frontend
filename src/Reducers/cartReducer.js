@@ -5,7 +5,7 @@ import {
 const cartReducer = (state={}, action) => {
     switch(action.type) {
         case ADD:
-            return state
+            return {...state, [action.id]: action.item }
     }
 }
 

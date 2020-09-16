@@ -8,6 +8,7 @@ const App = () => {
         <div className="App">
             <NavBar />
             <Routes />
+            <footer>Copyright Far North Woodworks 2020. All Rights Reserved</footer>
         </div>
     );
 }

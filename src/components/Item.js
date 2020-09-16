@@ -1,20 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
-} from 'reactstrap';
+    Link
+} from 'react-router-dom';
 import '../styles/Item.css';
 
-const Item = ({img, description, price, type}) => {
+const Item = ({id, img, name}) => {
+    const [hover, setHover] = useState(false)
+
+    const toggleHover = () => {
+        setHover(!hover)
+    }
+    
     return (
-        <Card className="Item">
-            <img width="100%" src={`http://127.0.0.1:5000/static/images/${img}`} alt={img} />
-            <CardBody>
-                <CardTitle>{description}</CardTitle>
-                <CardSubtitle>${price}</CardSubtitle>
-                <Button>Add to Cart</Button>
-            </CardBody>
-        </Card>
+        <div className="Item" onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
+            <Link to={`/item/${id}`}>
+            {hover && <div className="Item-Text-Container">
+                <div className="Item-Text">
+                    {name}
+                </div>
+                </div>}
+            <img className={hover ? "Item-Image hover" : "Item-Image"} src={`http://127.0.0.1:5000/static/images/${img}`} alt={img} />
+            </Link>
+        </div>
     );
 }
 

@@ -22,6 +22,9 @@ const NavBar = () => {
             <NavbarToggler onClick={toggle} />
             <Collapse className='NavBar-collapse' isOpen={isOpen} navbar>
                 <Nav navbar>
+                <NavItem className='NavBar-item'>
+                        <NavLink className="NavBar-link" to='#'>About</NavLink>
+                    </NavItem>
                     <NavItem className='NavBar-item'>
                         <NavLink className="NavBar-link" to='/products'>Products</NavLink>
                     </NavItem>

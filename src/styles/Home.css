@@ -1,0 +1,17 @@
+.Home-Text {
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+  
+}
+
+.Home-Text-Header {
+    text-align: center;
+    color: black;
+}
+
+.Home-Text-Paragraph {
+    line-height: 26px;
+    font-size: 15px;
+}
+

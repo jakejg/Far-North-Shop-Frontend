@@ -1,13 +1,14 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, Alert } from 'reactstrap';
 import ProductAPI from '../api/productsAPI';
 
 import '../styles/ChangeProducts.css';
 
 
 const ChangeProducts = () => {
-    const INITIAL_STATE = {description: "", price: "", type: "", imgFile: "", img: ""}
+    const INITIAL_STATE = {description: "", price: "", type: "Bowl", imgFile: "", img: "", quantity: "", name: ""}
     const [formData, setFormData] = useState(INITIAL_STATE);
+    const [error, setError] = useState(false)
     const fileInputRef = useRef();
 
     const handleChange = (e) => {
@@ -32,13 +33,23 @@ const ChangeProducts = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData)
-        ProductAPI.addProduct(formData)
+        let showError = false
+        for (let key in formData) {
+            if  (formData[key] === "") {
+                showError = true
+                setError(true)
+            }
+        }
+        if (!showError){
+            ProductAPI.addProduct(formData)
+            setError(false)
+        }
     }
     
     return (
         <div>
-            <Form className="ChangeProducts-form" onSubmit={handleSubmit}>
+            <Form className={error ? "ChangeProducts-form error" : "ChangeProducts-form"} onSubmit={handleSubmit}>
+                {error && <Alert color='danger'>Did you miss a field?</Alert>}
                 <FormGroup>
                     <Label for="description">Description</Label>
                     <Input type="textarea" 
@@ -72,6 +83,28 @@ const ChangeProducts = () => {
                         <option>Other/Don't put me in a box</option>
                     </Input>
                 </FormGroup>
+                <FormGroup>
+                    <Label for="quantity">Quantity</Label>
+                    <Input type="number" 
+                            name="quantity" 
+                            id="quantity" 
+                            placeholder="2" 
+                            onChange={handleChange}
+                            value={formData.quantity} />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="name">Name</Label>
+                    <Input type="Text" 
+                            name="name" 
+                            id="name" 
+                            placeholder="Alaska Wood Bowl" 
+                            onChange={handleChange}
+                            value={formData.name} />
+                             <FormText color="muted">
+                        Don't make this too long or it might look weird on the product page
+                    </FormText>
+                </FormGroup>
+                
                 <FormGroup>
                     <Label for="img">Picture</Label>
                     <Input type="file" ref={fileInputRef}

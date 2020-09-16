@@ -20,10 +20,13 @@ const ProductList = () => {
         <div className="ProductList">
             {products.map(product => 
             <Item key={product._id}
+                id = {product._id}
                 img={product.img}
                 description={product.description}
                 price={product.price}
                 type={product.type}
+                quantity={product.quantity}
+                name={product.name}
                 />
         )}
         </div>
