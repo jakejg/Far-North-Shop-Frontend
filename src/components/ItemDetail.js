@@ -8,6 +8,7 @@ import { add } from '../actions/cartActions';
 import { dispatch, useDispatch } from 'react-redux';
 import productsAPI from '../api/productsAPI';
 import {useParams} from 'react-router-dom';
+import { addToSessionStorage } from '../helpers/sessionStorage';
 
 const ItemDetail = () => {
     const [item, setItem] = useState({});
@@ -24,6 +25,7 @@ const ItemDetail = () => {
     const dispatch = useDispatch();
 
     const addToCart = () => {
+        addToSessionStorage(item)
         dispatch(add(id, item))
     }
     

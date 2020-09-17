@@ -2,28 +2,21 @@ import {
     ADD
 } from '../actions/actionTypes';
 
-let INITIAL_STATE = {}
-const cart = JSON.parse(sessionStorage.getItem('cart'));
-if (cart) {
-    for (let item of cart){
-        INITIAL_STATE[item._id] = item
-    }
-}
+import { createCart } from '../helpers/sessionStorage';
+
+const INITIAL_STATE = createCart();
 
 const cartReducer = (state=INITIAL_STATE, action) => {
-    console.log(state)
+
     switch(action.type) {
         case ADD:
-            let storage = JSON.parse(sessionStorage.getItem('cart'));
-            if (storage) {
-                storage.push(action.item);
-                sessionStorage.setItem('cart', JSON.stringify(storage))
+            // if item is already in cart just increase the quantity
+            if (state[action.id]) {
+                return {...state, [action.id]: {...state[action.id], quantity: state[action.id].quantity + 1 } }
             }
-            else {
-                sessionStorage.setItem('cart', JSON.stringify([action.item]))
-            }
-      
             return {...state, [action.id]: action.item }
+        default:
+            return state
     }
 }
 
