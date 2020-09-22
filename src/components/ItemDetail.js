@@ -35,6 +35,7 @@ const ItemDetail = () => {
             <CardBody>
                 <CardTitle>{item.description}</CardTitle>
                 <CardSubtitle>${item.price}</CardSubtitle>
+                <CardSubtitle>{item.num_available} in stock</CardSubtitle>
                 <Button onClick={addToCart}>Add to Cart</Button>
             </CardBody>
         </Card>
