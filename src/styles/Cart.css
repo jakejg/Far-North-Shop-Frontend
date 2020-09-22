@@ -40,8 +40,18 @@
 }
 
 .Cart-Quantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     position: relative;
     margin-bottom: 20px;
+}
+
+.Cart-Quantity-Inupt{
+    border: none;
+    text-align: center;
+    padding: 0px;
+    margin-bottom: -20px;
 }
 
 .total {
