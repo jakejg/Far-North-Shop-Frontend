@@ -4,15 +4,16 @@ import {
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 import '../styles/Item.css';
-import { add } from '../actions/cartActions';
-import { dispatch, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import productsAPI from '../api/productsAPI';
 import {useParams} from 'react-router-dom';
-import { addToSessionStorage } from '../helpers/sessionStorage';
+import { addToCart } from '../helpers/cart.js';
+
 
 const ItemDetail = () => {
     const [item, setItem] = useState({});
     const { id } = useParams();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getData = async () => {
@@ -22,12 +23,6 @@ const ItemDetail = () => {
         getData();
 
     }, [])
-    const dispatch = useDispatch();
-
-    const addToCart = () => {
-        addToSessionStorage(item)
-        dispatch(add(id, item))
-    }
     
     return (
         <Card className="ItemDetail">
@@ -36,7 +31,7 @@ const ItemDetail = () => {
                 <CardTitle>{item.description}</CardTitle>
                 <CardSubtitle>${item.price}</CardSubtitle>
                 <CardSubtitle>{item.num_available} in stock</CardSubtitle>
-                <Button onClick={addToCart}>Add to Cart</Button>
+                <Button onClick={() => addToCart(dispatch, id, item, 1)}>Add to Cart</Button>
             </CardBody>
         </Card>
     );
