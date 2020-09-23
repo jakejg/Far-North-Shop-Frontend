@@ -54,6 +54,15 @@
     margin-bottom: -20px;
 }
 
+.Cart-Buttons-Group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Cart-Button {
+    margin-left: 10px;
+}
+
 .total {
   
     width: 100%;
@@ -69,3 +78,4 @@
         padding: 10px
     }
 }
+

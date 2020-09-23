@@ -46,6 +46,8 @@ const Cart = () => {
                 {Object.keys(items).length ? 
                 <ul>
                     {Object.keys(items).map(item =>
+                        // add this component <CartItem item={item} />
+                        // remove negative inputs
                         <li key={item} className="Cart-Item">
                             <div>
                              <img className="Cart-Image" src={`http://127.0.0.1:5000/static/images/${items[item].img}`} alt={item.img} />
@@ -67,8 +69,11 @@ const Cart = () => {
                 </ul>:
                 <div>Nothing in your cart yet</div>
                 }
-                <Button onClick={handleSubmit}>Update Cart</Button>
-                <Button>Checkout</Button>
+                <div className="Cart-Buttons-Group">
+                    <Button className='Cart-Button' onClick={handleSubmit}>Update Cart</Button>
+                    <Button className='Cart-Button'>Checkout</Button>
+                </div>
+         
             </div>
         </div>
     );
