@@ -15,10 +15,10 @@ const Item = ({id, img, name}) => {
         <div className="Item" onMouseEnter={toggleHover} onMouseLeave={toggleHover}>
             <Link to={`/item/${id}`}>
             {hover && <div className="Item-Text-Container">
-                <div className="Item-Text">
-                    {name}
-                </div>
-                </div>}
+                            <div className="Item-Text">
+                                {name}
+                            </div>
+                        </div>}
             <img className={hover ? "Item-Image hover" : "Item-Image"} src={`http://127.0.0.1:5000/static/images/${img}`} alt={img} />
             </Link>
         </div>

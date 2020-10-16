@@ -3,7 +3,7 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
 } from 'reactstrap';
-import '../styles/Item.css';
+import '../styles/ItemDetail.css';
 import { useDispatch } from 'react-redux';
 import productsAPI from '../api/productsAPI';
 import {useParams} from 'react-router-dom';
@@ -25,15 +25,17 @@ const ItemDetail = () => {
     }, [])
     
     return (
-        <Card className="ItemDetail">
-            <img width="100%" src={`http://127.0.0.1:5000/static/images/${item.img}`} alt={item.img} />
-            <CardBody>
-                <CardTitle>{item.description}</CardTitle>
-                <CardSubtitle>${item.price}</CardSubtitle>
-                <CardSubtitle>{item.num_available} in stock</CardSubtitle>
+        <div className="ItemDetail">
+            <div>
+                <img className="ItemDetail-Image" src={`http://127.0.0.1:5000/static/images/${item.img}`} alt={item.img} />
+            </div>
+            <div>
+                <div className="ItemDetail-Name">{item.description}</div>
+                <div><span className="ItemDetail-Price">${item.price}</span> <span>{item.num_available} in stock</span> </div>         
+                
                 <Button onClick={() => addToCart(dispatch, id, item, 1)}>Add to Cart</Button>
-            </CardBody>
-        </Card>
+            </div>
+        </div>
     );
 }
 
