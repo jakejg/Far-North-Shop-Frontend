@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+ Button
 } from 'reactstrap';
 import '../styles/ItemDetail.css';
 import { useDispatch } from 'react-redux';
@@ -22,7 +21,7 @@ const ItemDetail = () => {
         }
         getData();
 
-    }, [])
+    }, [id])
     
     return (
         <div className="ItemDetail">
